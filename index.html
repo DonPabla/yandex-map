@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Моя Яндекс Карта</title>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=9ee4ae0f-2cf6-4954-8b89-605186fce9ce&lang=ru_RU" type="text/javascript"></script>
+</head>
+<body>
+    <script>
+
+        ymaps.ready(init);
+        function init() {
+    var myMap = new ymaps.Map("map", {
+        center: [43.097679, 131.976736], 
+        zoom: 12 
+    });
+
+    var locations = [
+        {
+            id: '0be77d7e-32f4-11e6-b11a-00155d668909',
+            name: 'Владивосток Юг',
+            coordinates: [43.097679, 131.976736],
+            telephone: '8(423) 279-05-47',
+            address: 'г.Владивосток, Командорская 11'
+        },
+        {
+            id: 'b0b1b346-d154-11e1-acb9-1cc1de786a7b',
+            name: 'Владивосток01',
+            coordinates: [43.13142, 131.918103],
+            telephone: '8(423) 279-05-47',
+            address: 'г.Владивосток, Военное ш.18'
+        },
+        {
+            id: 'b9381467-12bd-11ea-80ce-00155d4a0436',
+            name: 'Владивосток Луговая 18 (магазин "Westfalika")',
+            coordinates: [43.111528,131.937416],
+            telephone: '8(423) 279-05-47 ',
+            address: 'г.Владивосток, Луговая 18'
+            },
+            {
+            id: 'd835986d-12bd-11ea-80ce-00155d4a0436',
+            name: 'Владивосток проспект 100-летия Владивостока 86 (ма',
+            coordinates: [43.168589,131.915893],
+            telephone: '8(423) 279-05-47 ',
+            address: 'г.Владивосток, пр-кт 100 Владивостока 86'
+            },
+            {
+            id: 'f1c3cda9-12bd-11ea-80ce-00155d4a0436',
+            name: 'Владивосток Трамвайная 14 (магазин "Пешеход")',
+            coordinates: [43.111376,131.938144],
+            telephone: '8(423) 279-05-47 ',
+            address: 'г.Владивосток, Трамвайная 14'
+            },
+            {
+            id: 'cbf19fc4-12bd-11ea-80ce-00155d4a0436',
+            name: 'Владивосток проспект 100-летия Владивостока 47 (ма',
+            coordinates: [43.153391,131.908931],
+            telephone: '8(423) 279-05-47 ',
+            address: 'г.Владивосток, пр-кт 100 Владивостока 47'
+            },
+        
+    ];
+
+    for (var i = 0; i < locations.length; i++) {
+        var location = locations[i];
+        var placemark = new ymaps.Placemark(
+            location.coordinates,
+            {
+                hintContent: location.name,
+                balloonContent: 'Телефон: ' + location.telephone + '<br>' + 'Адрес: ' + location.address
+            },
+        );
+
+        myMap.geoObjects.add(placemark);
+    }
+}
+    </script>
+    
+    <div id="map" style="width: 600px; height: 400px;"></div>
+
+</body>
+</html>
